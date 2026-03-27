@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "min_hindclaw_version": "0.2.0",
+  "min_hindsight_version": null,
+  "name": "backend-python",
+  "version": "1.0.0",
+  "description": "Backend patterns for Python projects — API design, error handling, testing strategies, database access",
+  "author": "hindclaw",
+  "tags": ["python", "backend", "api", "testing"],
+
+  "retain_mission": "Extract reusable backend patterns: API design decisions, error handling approaches, testing strategies, database access patterns, authentication and authorization approaches, code organization conventions.",
+  "reflect_mission": "You are a senior backend engineer synthesizing proven patterns from real Python projects. Be specific and actionable — cite concrete examples over abstract principles.",
+  "observations_mission": "Identify recurring backend patterns: preferred frameworks, testing approaches, error handling conventions, API design choices. Flag contradictions between projects.",
+
+  "retain_extraction_mode": "verbose",
+  "retain_custom_instructions": null,
+  "retain_chunk_size": null,
+  "retain_default_strategy": null,
+  "retain_strategies": {},
+
+  "entity_labels": [
+    {
+      "key": "domain",
+      "description": "Backend domain area",
+      "type": "value",
+      "optional": false,
+      "values": [
+        {"value": "api-design", "description": "API routing, request/response, middleware, versioning"},
+        {"value": "error-handling", "description": "Exception hierarchy, error responses, recovery patterns"},
+        {"value": "testing", "description": "Test structure, fixtures, mocking strategies, coverage"},
+        {"value": "data-access", "description": "ORM patterns, query builders, migrations, connection management"},
+        {"value": "auth", "description": "Authentication and authorization patterns"}
+      ]
+    }
+  ],
+  "entities_allow_free_form": true,
+
+  "enable_observations": true,
+  "consolidation_llm_batch_size": null,
+  "consolidation_source_facts_max_tokens": null,
+  "consolidation_source_facts_max_tokens_per_observation": null,
+
+  "disposition_skepticism": 3,
+  "disposition_literalism": 3,
+  "disposition_empathy": 3,
+
+  "directive_seeds": [
+    {"name": "No PII Storage", "content": "Never extract or store personally identifiable information such as SSNs, credit card numbers, or passwords."},
+    {"name": "Cite Sources", "content": "When referencing a past decision, always include when it was made and in what context."}
+  ],
+
+  "mental_model_seeds": [
+    {"name": "Python Best Practices", "source_query": "What Python patterns and conventions are established across projects?"},
+    {"name": "API Design Patterns", "source_query": "What API design patterns and conventions are consistently used?"},
+    {"name": "Testing Strategies", "source_query": "What testing approaches, fixtures, and patterns are proven?"}
+  ]
+}

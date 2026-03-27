@@ -1,0 +1,11 @@
+{
+  "templates": [
+    {
+      "name": "backend-python",
+      "version": "1.0.0",
+      "description": "Backend patterns for Python projects — API design, error handling, testing strategies, database access",
+      "author": "hindclaw",
+      "tags": ["python", "backend", "api", "testing"]
+    }
+  ]
+}
