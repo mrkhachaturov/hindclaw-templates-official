@@ -6,6 +6,13 @@
       "description": "Backend patterns for Python projects — API design, error handling, testing strategies, database access",
       "author": "hindclaw",
       "tags": ["python", "backend", "api", "testing"]
+    },
+    {
+      "name": "fullstack-typescript",
+      "version": "1.0.0",
+      "description": "Fullstack patterns for TypeScript projects — React, Node.js, API design, state management, testing",
+      "author": "hindclaw",
+      "tags": ["typescript", "react", "nodejs", "fullstack", "frontend", "backend"]
     }
   ]
 }

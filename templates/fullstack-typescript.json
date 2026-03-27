@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "min_hindclaw_version": "0.2.0",
+  "min_hindsight_version": null,
+  "name": "fullstack-typescript",
+  "version": "1.0.0",
+  "description": "Fullstack patterns for TypeScript projects — React, Node.js, API design, state management, testing",
+  "author": "hindclaw",
+  "tags": ["typescript", "react", "nodejs", "fullstack", "frontend", "backend"],
+
+  "retain_mission": "Extract reusable fullstack TypeScript patterns: React component design, state management approaches, API integration patterns, Node.js backend conventions, type system usage, build tooling decisions.",
+  "reflect_mission": "You are a senior fullstack TypeScript engineer synthesizing proven patterns from real projects. Focus on type safety, component architecture, and API design. Be specific — cite concrete examples over abstract principles.",
+  "observations_mission": "Identify recurring fullstack patterns: preferred React patterns (hooks, context, server components), state management choices, API design conventions, testing approaches, build tool preferences. Flag inconsistencies between frontend and backend conventions.",
+
+  "retain_extraction_mode": "verbose",
+  "retain_custom_instructions": null,
+  "retain_chunk_size": null,
+  "retain_default_strategy": null,
+  "retain_strategies": {},
+
+  "entity_labels": [
+    {
+      "key": "layer",
+      "description": "Application layer",
+      "type": "value",
+      "optional": false,
+      "values": [
+        {"value": "frontend", "description": "React components, hooks, routing, styling"},
+        {"value": "backend", "description": "Node.js/Express/Fastify, middleware, controllers"},
+        {"value": "shared", "description": "Types, utilities, validation shared between layers"},
+        {"value": "infra", "description": "Build tools, CI/CD, deployment, Docker"}
+      ]
+    },
+    {
+      "key": "concern",
+      "description": "Technical concern area",
+      "type": "value",
+      "optional": true,
+      "values": [
+        {"value": "state", "description": "State management, data flow, caching"},
+        {"value": "api", "description": "REST/GraphQL design, data fetching, error handling"},
+        {"value": "types", "description": "TypeScript types, generics, utility types, inference"},
+        {"value": "testing", "description": "Unit tests, integration tests, E2E, mocking"},
+        {"value": "auth", "description": "Authentication, authorization, session management"},
+        {"value": "perf", "description": "Performance optimization, bundle size, lazy loading"}
+      ]
+    }
+  ],
+  "entities_allow_free_form": true,
+
+  "enable_observations": true,
+  "consolidation_llm_batch_size": null,
+  "consolidation_source_facts_max_tokens": null,
+  "consolidation_source_facts_max_tokens_per_observation": null,
+
+  "disposition_skepticism": 4,
+  "disposition_literalism": 3,
+  "disposition_empathy": 2,
+
+  "directive_seeds": [
+    {"name": "No Secrets in Code", "content": "Never extract or store API keys, tokens, passwords, or connection strings. Flag any hardcoded secrets found in code."},
+    {"name": "Prefer Type Safety", "content": "When noting patterns, prefer strongly typed approaches over any/unknown. Flag type assertions (as) and non-null assertions (!) as potential concerns."},
+    {"name": "Cite Context", "content": "When referencing a past decision, always include when it was made and which project it came from."}
+  ],
+
+  "mental_model_seeds": [
+    {"name": "React Component Patterns", "source_query": "What React component patterns, hooks, and composition strategies are consistently used across projects?"},
+    {"name": "TypeScript Type Patterns", "source_query": "What TypeScript type patterns, generics usage, and type safety conventions are established?"},
+    {"name": "API Integration Patterns", "source_query": "What API design, data fetching, and error handling patterns are proven across frontend and backend?"}
+  ]
+}
