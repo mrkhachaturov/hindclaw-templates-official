@@ -1,0 +1,57 @@
+{
+  "min_hindclaw_version": "0.2.0",
+  "min_hindsight_version": null,
+  "id": "astromech-test",
+  "description": "OpenClaw multi-agent platform — agent fleet, Telegram channels, voice (TTS), patch-based iOS build, Docker services",
+  "author": "hindclaw",
+  "tags": ["openclaw", "multi-agent", "telegram", "docker", "ios", "tts"],
+
+  "retain_mission": "Extract OpenClaw platform decisions: agent configuration patterns, channel setup, voice/TTS configuration, gateway deployment, iOS patch-based build workflows, Docker service architecture, plugin integration. Capture the reasoning behind decisions, not just what was done.",
+  "reflect_mission": "You are a platform engineer with deep context about this OpenClaw multi-agent deployment. Reference specific agent configurations, channel setups, build workflows, and infrastructure decisions when answering.",
+  "observations_mission": "Identify recurring patterns: agent configuration conventions (SOUL.md, skills, MCP tools), Telegram channel setup, voice provider choices, gateway deployment procedures, Docker networking decisions. Flag when decisions change over time.",
+
+  "retain_extraction_mode": "verbose",
+  "retain_custom_instructions": null,
+  "retain_chunk_size": null,
+  "retain_default_strategy": null,
+  "retain_strategies": {},
+
+  "entity_labels": [
+    {
+      "key": "domain",
+      "description": "Platform domain area",
+      "type": "value",
+      "optional": false,
+      "values": [
+        {"value": "agent-config", "description": "Agent fleet setup — SOUL.md, AGENTS.md, skills, MCP tools, per-agent workspace"},
+        {"value": "channels", "description": "Telegram channels, bot configuration, topic routing, access control"},
+        {"value": "voice-tts", "description": "Yandex SpeechKit, OpenAI TTS, Edge TTS, Talk Mode, pronunciation"},
+        {"value": "build-deploy", "description": "Patch-based iOS build, gateway deployment, upstream sync, version bumps"},
+        {"value": "docker-infra", "description": "Docker compose stack, networking, sidecars, host-proxy, systemd services"},
+        {"value": "gateway-config", "description": "OpenClaw gateway config — openclaw.json, modular $include, hooks, plugins"},
+        {"value": "debugging", "description": "Troubleshooting, log analysis, service recovery, config migration"}
+      ]
+    }
+  ],
+  "entities_allow_free_form": true,
+
+  "enable_observations": true,
+  "consolidation_llm_batch_size": null,
+  "consolidation_source_facts_max_tokens": null,
+  "consolidation_source_facts_max_tokens_per_observation": null,
+
+  "disposition_skepticism": 4,
+  "disposition_literalism": 3,
+  "disposition_empathy": 2,
+
+  "directive_seeds": [
+    {"name": "No Secrets", "content": "Never extract or store API keys, tokens, passwords, or other secrets. Reference them by name (e.g., 'the Yandex API key') without including values."},
+    {"name": "Cite Context", "content": "When referencing a past decision, include when it was made, what alternatives were considered, and why this choice was made."}
+  ],
+
+  "mental_model_seeds": [
+    {"name": "Platform Architecture", "source_query": "What is the overall architecture — gateway, agents, Docker services, networking, and how they connect?"},
+    {"name": "Agent Fleet Patterns", "source_query": "How are agents configured — what conventions exist for skills, MCP tools, voice, and workspace setup?"},
+    {"name": "Build and Deploy Workflow", "source_query": "How does the build system work — patching, upstream sync, gateway deployment, iOS builds?"}
+  ]
+}

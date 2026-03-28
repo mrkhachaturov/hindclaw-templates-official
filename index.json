@@ -13,6 +13,13 @@
       "description": "Fullstack patterns for TypeScript projects — React, Node.js, API design, state management, testing",
       "author": "hindclaw",
       "tags": ["typescript", "react", "nodejs", "fullstack", "frontend", "backend"]
+    },
+    {
+      "name": "astromech-test",
+      "version": "1.0.0",
+      "description": "OpenClaw multi-agent platform — agent fleet, Telegram channels, voice (TTS), patch-based iOS build, Docker services",
+      "author": "hindclaw",
+      "tags": ["openclaw", "multi-agent", "telegram", "docker", "ios", "tts"]
     }
   ]
 }
