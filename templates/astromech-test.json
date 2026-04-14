@@ -1,59 +1,63 @@
 {
-  "schema_version": 1,
-  "min_hindclaw_version": "0.2.0",
-  "min_hindsight_version": null,
-  "name": "astromech-test",
-  "version": "1.0.0",
-  "description": "OpenClaw multi-agent platform — agent fleet, Telegram channels, voice (TTS), patch-based iOS build, Docker services",
-  "author": "hindclaw",
-  "tags": ["openclaw", "multi-agent", "telegram", "docker", "ios", "tts"],
-
-  "retain_mission": "Extract OpenClaw platform decisions: agent configuration patterns, channel setup, voice/TTS configuration, gateway deployment, iOS patch-based build workflows, Docker service architecture, plugin integration. Capture the reasoning behind decisions, not just what was done.",
-  "reflect_mission": "You are a platform engineer with deep context about this OpenClaw multi-agent deployment. Reference specific agent configurations, channel setups, build workflows, and infrastructure decisions when answering.",
-  "observations_mission": "Identify recurring patterns: agent configuration conventions (SOUL.md, skills, MCP tools), Telegram channel setup, voice provider choices, gateway deployment procedures, Docker networking decisions. Flag when decisions change over time.",
-
-  "retain_extraction_mode": "verbose",
-  "retain_custom_instructions": null,
-  "retain_chunk_size": null,
-  "retain_default_strategy": null,
-  "retain_strategies": {},
-
-  "entity_labels": [
+  "version": "1",
+  "bank": {
+    "reflect_mission": "You know the Astromech/OpenClaw multi-agent platform deeply. Synthesize agent fleet operation, Telegram channel routing, voice (Yandex/OpenAI TTS), iOS build patches, and Docker service orchestration.",
+    "retain_mission": "Extract Astromech operational patterns: agent configurations, channel bindings, voice provider decisions, iOS patch workflows, Docker compose layouts, gateway config conventions.",
+    "retain_extraction_mode": "concise",
+    "observations_mission": "Identify recurring decisions in the Astromech deployment: which agent handles what, how channels map, how TTS providers swap, how the patch-based build system is used.",
+    "enable_observations": true,
+    "disposition_skepticism": 4,
+    "disposition_literalism": 4,
+    "disposition_empathy": 2,
+    "entity_labels": [
+      {
+        "key": "droid",
+        "description": "Which agent in the fleet",
+        "type": "value",
+        "optional": true,
+        "tag": true,
+        "values": [
+          {"value": "yoda", "description": "Strategic mentor, default agent"},
+          {"value": "c3po", "description": "Knowledge librarian (Confluence, NotebookLM)"},
+          {"value": "k2so", "description": "Jira, Tana"},
+          {"value": "l3-37", "description": "Health agent (WHOOP + hvault)"},
+          {"value": "other", "description": "Any other droid in the fleet"}
+        ]
+      },
+      {
+        "key": "subsystem",
+        "description": "Which Astromech subsystem is touched",
+        "type": "multi-values",
+        "optional": true,
+        "tag": true,
+        "values": [
+          {"value": "gateway", "description": "OpenClaw gateway systemd service"},
+          {"value": "build-ios", "description": "iOS patch-based build"},
+          {"value": "docker", "description": "Docker compose stack"},
+          {"value": "telegram", "description": "Telegram channel routing"},
+          {"value": "voice", "description": "Talk Mode TTS (Yandex / OpenAI)"}
+        ]
+      }
+    ],
+    "entities_allow_free_form": true
+  },
+  "directives": [
     {
-      "key": "domain",
-      "description": "Platform domain area",
-      "type": "value",
-      "optional": false,
-      "values": [
-        {"value": "agent-config", "description": "Agent fleet setup — SOUL.md, AGENTS.md, skills, MCP tools, per-agent workspace"},
-        {"value": "channels", "description": "Telegram channels, bot configuration, topic routing, access control"},
-        {"value": "voice-tts", "description": "Yandex SpeechKit, OpenAI TTS, Edge TTS, Talk Mode, pronunciation"},
-        {"value": "build-deploy", "description": "Patch-based iOS build, gateway deployment, upstream sync, version bumps"},
-        {"value": "docker-infra", "description": "Docker compose stack, networking, sidecars, host-proxy, systemd services"},
-        {"value": "gateway-config", "description": "OpenClaw gateway config — openclaw.json, modular $include, hooks, plugins"},
-        {"value": "debugging", "description": "Troubleshooting, log analysis, service recovery, config migration"}
-      ]
+      "name": "prefer-concrete-commands",
+      "content": "Favor concrete `just` / `docker compose` / `systemctl` commands over abstract descriptions. Astromech is operated via its task runner.",
+      "priority": 6,
+      "is_active": true,
+      "tags": ["operations"]
     }
   ],
-  "entities_allow_free_form": true,
-
-  "enable_observations": true,
-  "consolidation_llm_batch_size": null,
-  "consolidation_source_facts_max_tokens": null,
-  "consolidation_source_facts_max_tokens_per_observation": null,
-
-  "disposition_skepticism": 4,
-  "disposition_literalism": 3,
-  "disposition_empathy": 2,
-
-  "directive_seeds": [
-    {"name": "No Secrets", "content": "Never extract or store API keys, tokens, passwords, or other secrets. Reference them by name (e.g., 'the Yandex API key') without including values."},
-    {"name": "Cite Context", "content": "When referencing a past decision, include when it was made, what alternatives were considered, and why this choice was made."}
-  ],
-
-  "mental_model_seeds": [
-    {"name": "Platform Architecture", "source_query": "What is the overall architecture — gateway, agents, Docker services, networking, and how they connect?"},
-    {"name": "Agent Fleet Patterns", "source_query": "How are agents configured — what conventions exist for skills, MCP tools, voice, and workspace setup?"},
-    {"name": "Build and Deploy Workflow", "source_query": "How does the build system work — patching, upstream sync, gateway deployment, iOS builds?"}
+  "mental_models": [
+    {
+      "id": "astromech-architecture",
+      "name": "Astromech Architecture",
+      "source_query": "How are services laid out across host processes, systemd units, and the Docker compose stack?",
+      "tags": ["architecture", "ops"],
+      "max_tokens": 2048,
+      "trigger": { "refresh_after_consolidation": true }
+    }
   ]
 }

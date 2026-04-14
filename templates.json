@@ -1,0 +1,34 @@
+{
+  "catalog_version": "1",
+  "name": "hindclaw-official",
+  "description": "Official HindClaw bank templates",
+  "templates": [
+    {
+      "id": "backend-python",
+      "name": "Backend Python",
+      "description": "Backend patterns for Python projects — API design, error handling, testing, database access",
+      "category": "coding",
+      "integrations": ["claude-code", "codex", "hindclaw", "openclaw"],
+      "tags": ["python", "backend", "api", "testing"],
+      "manifest_file": "templates/backend-python.json"
+    },
+    {
+      "id": "fullstack-typescript",
+      "name": "Fullstack TypeScript",
+      "description": "Fullstack patterns for TypeScript projects — React, Node.js, API, state management, testing",
+      "category": "coding",
+      "integrations": ["claude-code", "codex", "hindclaw", "openclaw"],
+      "tags": ["typescript", "react", "nodejs", "fullstack"],
+      "manifest_file": "templates/fullstack-typescript.json"
+    },
+    {
+      "id": "astromech-test",
+      "name": "Astromech Test",
+      "description": "OpenClaw multi-agent platform — agent fleet, Telegram channels, voice, iOS build, Docker services",
+      "category": "assistant",
+      "integrations": ["openclaw", "hindclaw"],
+      "tags": ["openclaw", "multi-agent", "telegram", "docker"],
+      "manifest_file": "templates/astromech-test.json"
+    }
+  ]
+}
