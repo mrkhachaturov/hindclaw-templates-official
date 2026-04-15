@@ -1,0 +1,13 @@
+{
+  "name": "hindclaw-templates",
+  "version": "2.0.0",
+  "description": "Official HindClaw bank templates",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-templates.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}

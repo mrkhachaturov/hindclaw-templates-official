@@ -1,0 +1,35 @@
+name: Validate Templates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch upstream bank-template-schema.json
+        run: |
+          curl -fsSL \
+            https://raw.githubusercontent.com/vectorize-io/hindsight/main/hindsight-docs/static/bank-template-schema.json \
+            -o bank-template-schema.json
+
+      - name: Validate templates
+        run: node scripts/check-templates.mjs
